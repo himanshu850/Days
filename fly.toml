@@ -1,4 +1,4 @@
-app = "days-ancdla"
+app = "days-g1kdka"
 kill_signal = "SIGINT"
 kill_timeout = 5
 
