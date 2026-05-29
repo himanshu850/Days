@@ -1,0 +1,14 @@
+app = "REPLACE_WITH_YOUR_FLY_APP_NAME"
+kill_signal = "SIGINT"
+kill_timeout = 5
+
+[[services]]
+  internal_port = 5000
+  protocol = "tcp"
+  [services.concurrency]
+    type = "connections"
+    hard_limit = 25
+    soft_limit = 20
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80
