@@ -17,6 +17,22 @@ jobs:
       - name: Setup Flyctl
         uses: superfly/flyctl-actions/setup-flyctl@v1
 
+      - name: Workflow diagnostics
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        run: |
+          echo "=== Workspace files ==="
+          ls -la
+          echo "\n=== flyctl version (if installed) ==="
+          flyctl version || true
+          echo "\n=== fly.toml content ==="
+          if [ -f fly.toml ]; then sed -n '1,200p' fly.toml; else echo 'no fly.toml in workspace'; fi
+          echo "\n=== FLY_API_TOKEN presence ==="
+          if [ -n "$FLY_API_TOKEN" ]; then echo 'FLY_API_TOKEN is set'; else echo 'FLY_API_TOKEN is NOT set'; fi
+          echo "\n=== show working dir ==="
+          pwd
+          echo "\n=== done diagnostics ==="
+
       - name: Authenticate with Fly
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
