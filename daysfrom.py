@@ -4,7 +4,7 @@ from urllib.parse import urlparse
 import json
 
 # Define the reference date
-reference_date = datetime(2026, 1, 15)
+reference_date = datetime(2026, 1, 14)  # January 14th, 2026
 
 HTML_TEMPLATE = """
 <!DOCTYPE html>
